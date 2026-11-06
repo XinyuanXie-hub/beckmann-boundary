@@ -21,41 +21,53 @@ Lf(x)=\sum_{i=1}^n\frac{f(x)-f(x^{\oplus i})}{2}.
 For a vector field $`V:\Omega_n\to\mathbb R^n`$, its divergence and cost are
 
 ```math
-\operatorname{div}V(x)=\sum_{i=1}^n\bigl(V_i(x)-V_i(x^{\oplus i})\bigr),
-\qquad
+\mathrm{div}\,V(x)=\sum_{i=1}^n\bigl(V_i(x)-V_i(x^{\oplus i})\bigr).
+```
+
+```math
 \mathcal C(V)=\mathbb E\left(\sum_{i=1}^nV_i(x)^2\right)^{1/2}.
 ```
 
 The **Beckmann boundary** is
 
 ```math
-\mathsf B(f)=\inf\{\mathcal C(V):\operatorname{div}V=Lf\}.
+\mathsf B(f)=\inf\{\mathcal C(V):\mathrm{div}\,V=Lf\}.
 ```
 
 The **positive one-sided boundary** is
 
 ```math
-\mathsf H_+(f)=\mathbb E\sqrt{h_+(x)},
-\qquad
-h_+(x)=\#\{i:f(x)=1,\ f(x^{\oplus i})=-1\}.
+\mathsf H_+(f)=\mathbb E\sqrt{h_+(x)}.
 ```
 
-An **endpoint allocation** for $`f`$ is a family $`a_i(x)\geq0`$ satisfying
-
 ```math
-\begin{cases}
-a_i(x)=0,&f(x)=f(x^{\oplus i}),\\
-a_i(x)+a_i(x^{\oplus i})=1,&f(x)\ne f(x^{\oplus i}).
-\end{cases}
+\begin{aligned}
+h_+(x)=\#\{i:\;&f(x)=1,\\
+&f(x^{\oplus i})=-1\}.
+\end{aligned}
 ```
 
-Write $`\mathcal A(f)`$ for the set of such allocations. Define the **optimized fractional** and **optimized integral colored boundaries** by
+An **endpoint allocation** for $`f`$ is a family $`a_i(x)\geq0`$. On a nonsensitive edge, where $`f(x)=f(x^{\oplus i})`$, it satisfies
 
 ```math
-\mathsf T_{\rm frac}(f)=\inf_{a\in\mathcal A(f)}\mathcal C(a),
-\qquad
-\mathsf T_{\rm col}(f)=
-\inf_{\substack{a\in\mathcal A(f)\\a_i(x)\in\{0,1\}\ \text{for all }x,i}}\mathcal C(a).
+a_i(x)=0.
+```
+
+On a sensitive edge, where $`f(x)\ne f(x^{\oplus i})`$, it satisfies
+
+```math
+a_i(x)+a_i(x^{\oplus i})=1.
+```
+
+Write $`\mathcal A(f)`$ for the set of such allocations, and let $`\mathcal A_{\mathrm{int}}(f)`$ consist of those satisfying $`a_i(x)\in\{0,1\}`$ for every $`x,i`$. Define the **optimized fractional** and **optimized integral colored boundaries** by
+
+```math
+\mathsf T_{\mathrm{frac}}(f)=\inf_{a\in\mathcal A(f)}\mathcal C(a).
+```
+
+```math
+\mathsf T_{\mathrm{col}}(f)=
+\inf_{a\in\mathcal A_{\mathrm{int}}(f)}\mathcal C(a).
 ```
 
 Assigning every sensitive edge entirely to its positive endpoint gives $`\mathsf H_+(f)`$, the fixed all-red coloring. The two optimized boundaries instead minimize over all admissible allocations.
@@ -65,10 +77,14 @@ Assigning every sensitive edge entirely to its positive endpoint gives $`\mathsf
 **Theorem 1 (fixed one-sided comparison).** For every integer $`n\geq1`$, let $`o=(-1,\ldots,-1)`$ and define $`f_n(o)=-1`$ and $`f_n(x)=1`$ for $`x\ne o`$. Then
 
 ```math
-\mathsf B(f_n)=\frac{\sqrt n}{2^n},
-\qquad
-\mathsf H_+(f_n)=\frac{n}{2^n},
-\qquad
+\mathsf B(f_n)=\frac{\sqrt n}{2^n}.
+```
+
+```math
+\mathsf H_+(f_n)=\frac{n}{2^n}.
+```
+
+```math
 \frac{\mathsf H_+(f_n)}{\mathsf B(f_n)}=\sqrt n.
 ```
 
@@ -83,10 +99,12 @@ n_k=\frac{2^{k+2}(4^k-1)}{3}.
 There exists a Boolean function $`f:\Omega_{n_k}\to\{-1,1\}`$ such that $`\mathsf B(f)>0`$ and
 
 ```math
-\frac{\mathsf T_{\rm frac}(f)}{\mathsf B(f)}
-\geq\frac{3}{4\sqrt6}\sqrt k,
-\qquad
-\frac{\mathsf T_{\rm col}(f)}{\mathsf B(f)}
+\frac{\mathsf T_{\mathrm{frac}}(f)}{\mathsf B(f)}
+\geq\frac{3}{4\sqrt6}\sqrt k.
+```
+
+```math
+\frac{\mathsf T_{\mathrm{col}}(f)}{\mathsf B(f)}
 \geq\frac{3}{4\sqrt6}\sqrt k.
 ```
 
