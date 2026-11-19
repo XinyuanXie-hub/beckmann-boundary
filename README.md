@@ -1,4 +1,4 @@
-<!-- Verification narrative adapted from XinyuanXie-hub/Konig-constant, commit 165a31717d8084e6df9a7c8f745059af0e2ed40a, and XinyuanXie-hub/cyclic-lsi-new, commit 4b4ff9a506c0aac696119542b76276238c14cb9b, under Apache-2.0. Setup, verification script, workflow and Pages files derive from XinyuanXie-hub/lean-verification-template, commit a2b0336c176c884d3e7ea3b833b74673b0c2917d. -->
+<!-- Verification section from XinyuanXie-hub/lean-verification-template, commit 52c39e902d324b82845c555eb8227bd38058f30b, under Apache-2.0. Setup, verification script, workflow and Pages files derive from XinyuanXie-hub/lean-verification-template, commit a2b0336c176c884d3e7ea3b833b74673b0c2917d. -->
 
 # Beckmann boundary comparison examples
 
@@ -74,7 +74,7 @@ Assigning every sensitive edge entirely to its positive endpoint gives $`\mathsf
 
 <a name="theorem-1"></a>
 
-**Theorem 1 (fixed one-sided comparison).** For every integer $`n\geq1`$, let $`o=(-1,\ldots,-1)`$ and define $`f_n(o)=-1`$ and $`f_n(x)=1`$ for $`x\ne o`$. Then
+**Proposition 5.2 (fixed one-sided comparison).** For every integer $`n\geq1`$, let $`o=(-1,\ldots,-1)`$ and define $`f_n(o)=-1`$ and $`f_n(x)=1`$ for $`x\ne o`$. Then
 
 ```math
 \mathsf B(f_n)=\frac{\sqrt n}{2^n}.
@@ -90,7 +90,7 @@ Assigning every sensitive edge entirely to its positive endpoint gives $`\mathsf
 
 <a name="theorem-2"></a>
 
-**Theorem 2 (optimized coloring comparison).** For every integer $`k\geq1`$, set
+**Theorem 5.5 (optimized coloring comparison).** For every integer $`k\geq1`$, set
 
 ```math
 n_k=\frac{2^{k+2}(4^k-1)}{3}.
@@ -114,12 +114,20 @@ Lean encodes $`-1,+1`$ by `false,true`. The two theorem targets in [comparator.j
 
 ## Verification
 
-To verify the correctness of the theorems in Lean, one only needs to check that the statements and definitions in [Challenge.lean](Challenge.lean) match [Theorem 1](#theorem-1) and [Theorem 2](#theorem-2) stated above, and confirm that `lake comparator` succeeds.
+Check that the statements and definitions in [Challenge.lean](Challenge.lean) match the mathematical statements above and the cited sources. Then run:
 
-The results of `lake comparator` can be checked through the GitHub workflow provided by this project as follows:
+```sh
+bash scripts/verify-comparator.sh
+```
 
-1. Sign in to GitHub, open the “Actions” tab, then open the first workflow run listed there, or open it directly from [here](https://xinyuanxie-hub.github.io/beckmann-boundary/latest-run/).
-2. Click “Verify the Challenge against Solution”, then expand “Run Comparator with Lean, NanoDa, and con-ron”.
-3. Check that the log reports acceptance by con-ron, NanoDa, and Lean, followed by `Your solution is okay!`.
+This runs the full Comparator with Lean, NanoDa, and con-ron.
 
-Note: Here, we use the [“gold standard”](https://lean-lang.org/doc/reference/latest/ValidatingProofs/#validating-comparator) for validating proofs in Lean, and we refer readers to [“Challenges and External Checkers”](https://lean-lang.org/doc/reference/latest/Build-Tools-and-Distribution/Lake/#lake-comparator) for details on how it works.
+To inspect verification on GitHub:
+
+1. Open this repository’s **Actions** tab and select the run for the commit being reviewed.
+2. Open “Verify the Challenge against Solution”, then “Run Comparator with Lean, NanoDa, and con-ron”.
+3. Check that the log reports acceptance by Lean, NanoDa, and con-ron, followed by `Your solution is okay!`.
+
+Successful verification checks the recorded Lean statements and proofs; fidelity to the paper requires reviewing Challenge.lean.
+
+See Lean's documentation on [validating proofs](https://lean-lang.org/doc/reference/latest/ValidatingProofs/#validating-comparator) and [Comparator](https://lean-lang.org/doc/reference/latest/Build-Tools-and-Distribution/Lake/#lake-comparator).
