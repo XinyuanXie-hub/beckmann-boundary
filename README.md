@@ -112,7 +112,7 @@ Since $`\log n_k\leq2k\log8`$ for $`k\geq1`$, its lower bounds give a $`\sqrt{\l
 
 ## Verification
 
-To verify the correctness of the theorem in Lean, one only needs to check that the statement and definitions in [Challenge.lean](Challenge.lean) match [Theorem 1](#theorem-1) stated above, and confirm that `lake comparator` succeeds.
+To verify the correctness of the theorems in Lean, one only needs to check that the statements and definitions in [Challenge.lean](Challenge.lean) match [Proposition 5.2](#theorem-1) and [Theorem 5.5](#theorem-2) stated above, and confirm that `lake comparator` succeeds.
 
 The results of `lake comparator` can be checked through the GitHub workflow provided by this project as follows:
 
